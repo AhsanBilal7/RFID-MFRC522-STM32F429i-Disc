@@ -153,7 +153,10 @@ uint8_t test[] = "Hello! This is Ahsan Bilal\r\n";
 			//  MFRC522_SelectTag(MyCardSerNum);
 			  HAL_GPIO_WritePin(GPIOG,GPIO_PIN_14,GPIO_PIN_SET);
 			//  CardID = CardID%16;
+			  int newstring[9];
 			  itoa (CardID[0] , string , 16);
+			  // The UID is sored in the firt index of the card number and it is a 4 bit number
+			  // We used the Itoa function to convert  the 4 byte integer to 4 byte a hexadecimal number
 			  HAL_UART_Transmit(&huart1,&string[0], sizeof(string[0]), 1000);
 			  HAL_UART_Transmit(&huart1,&string[1], sizeof(string[1]), 1000);
 			  HAL_UART_Transmit(&huart1,&string[2], sizeof(string[1]), 1000);
@@ -163,7 +166,9 @@ uint8_t test[] = "Hello! This is Ahsan Bilal\r\n";
 			  HAL_UART_Transmit(&huart1,&string[6], sizeof(string[1]), 1000);
 			  HAL_UART_Transmit(&huart1,&string[7], sizeof(string[1]), 1000);
 			  HAL_UART_Transmit(&huart1,&string[8], sizeof(string[1]), 1000);
+//			  HAL_UART_Transmit(&huart1,&string[10], sizeof(string[1]), 1000);
 
+//			  HAL_UART_Transmit(&huart1,&string, sizeof(string), 1000);
 
 		 //     HAL_UART_Transmit(&huart1,&CardID[0], sizeof(CardID[0]), 1000);
 			  HAL_UART_Transmit(&huart1, &newline, sizeof(newline), 1000);
